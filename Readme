@@ -1,0 +1,27 @@
+# AWS Serverless Cost Optimizer
+
+A serverless cost-optimization tool built with **AWS Lambda, Python, Boto3, CloudWatch, EventBridge Scheduler, and SNS**.
+
+It runs daily, detects potentially unused AWS resources, and sends an email report.
+
+## Architecture
+EventBridge Scheduler
+        ↓
+AWS Lambda
+        ↓
+EC2, EBS and CloudWatch checks
+        ↓
+Amazon SNS
+        ↓
+Email report
+
+
+## Features
+
+- Detects EC2 instances averaging below **5% CPU over 14 days**
+- Finds unattached EBS volumes
+- Finds unassociated Elastic IPs
+- Reports EBS snapshots older than **60 days**
+- Identifies snapshots whose source volumes no longer exist
+- Sends automated SNS email reports
+
